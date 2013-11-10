@@ -967,7 +967,9 @@ angular.module('ngAnimate', ['ng'])
         if(timings.transitionDuration > 0) {
           element.addClass(NG_ANIMATE_FALLBACK_CLASS_NAME);
           activeClassName += NG_ANIMATE_FALLBACK_ACTIVE_CLASS_NAME + ' ';
-          node.style[TRANSITION_PROP + PROPERTY_KEY] = 'none';
+          if (node.nodeType == ELEMENT_NODE) {
+            node.style[TRANSITION_PROP + PROPERTY_KEY] = 'none';
+          }
         }
 
         forEach(className.split(' '), function(klass, i) {
